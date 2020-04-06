@@ -4,11 +4,11 @@ document.addEventListener('DOMContentLoaded', function () {
         let N = 0;
         alert("S = " + str + '\n');
 
-        for (let i = 0; i < arr.length; i++)
+        for (let i = 0; i < arr.length; i++) // проходим по всем словам в массиве
         {
-            for (let char of arr[i])
+            for (let char of arr[i])  // посимвольно проверяем вхождение символа строки Ki в S 
             {
-                if (str.search(char) === -1)
+                if (str.search(char) === -1) // не нашли совпадение увеличиваем переменную
                     N++;
             }
             alert(arr[i] + " = " + N);
