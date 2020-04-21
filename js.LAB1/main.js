@@ -42,7 +42,7 @@ function CountN(str, substr)
  }
 
 let S = prompt("Введите слово S");
-let Kn = prompt("Введите слова k..kn");
+let Kn = prompt("Введите слова k..kn через пробел");
 S.toUpperCase();
 Kn.toUpperCase();
 CountN(S,Kn);
