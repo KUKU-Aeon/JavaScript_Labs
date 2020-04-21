@@ -1,27 +1,50 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    function CountN(str, arr) {
-        let N = 0;
-        alert("S = " + str + '\n');
+function CountSymbol(word)
+{
+    let CounterMap = new Map();
 
-        for (let i = 0; i < arr.length; i++) // проходим по всем словам в массиве
-        {
-            for (let char of arr[i])  // посимвольно проверяем вхождение символа строки Ki в S 
-            {
-                if (str.search(char) === -1) // не нашли совпадение увеличиваем переменную
-                    N++;
-            }
-            alert(arr[i] + " = " + N);
-            N = 0;
-        }
+    for (let char of word)
+    {
+        let count = CounterMap.get(char) || 0;
+        CounterMap.set(char, count + 1);
     }
+    return CounterMap;
+}
 
-    let str = prompt("Введите слово S");
+function CountN(str, substr)
+{
+ let N = 0;
+ let result = "";
+ let map = CountSymbol(str);
+ console.log(map);
+ let word = substr.split(' ');
+ word.forEach(function (word) {
+     for (let char of word)
+     {
+       if (!map.has(char))
+           N++;
+       else
+       {
+           let value = map.get(char);
+           if (value === 0)
+               N++;
+           else map.set(char, value - 1);
+       }
+     }
+     result += word + " = " + N + "\n";
 
-    let s = prompt("Введите слова K");
+     map = CountSymbol(str);
+     N = 0;
+ });
+alert(result);
+ }
 
-    let NArr = s.split(' '); // разбиваем строку на массив строк слов K
 
-    CountN(str, NArr);
+let S = prompt("Введите слово S");
+let Kn = prompt("Введите слова k..kn");
+S.toLowerCase();
+Kn.toLowerCase();
+CountN(S,Kn);
 
 });
