@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-//считаем кол-во символов в слове S и кол-во его повторений
+//Считает кол-во символов в слове S
+// по типу символ => key , кол-во вхождений => value
 function CountSymbol(word)
 {
     let CounterMap = new Map();
@@ -12,40 +13,38 @@ function CountSymbol(word)
     }
     return CounterMap;
 }
-//чекаем можно ли составить из символов слова S слова K..Kn 
+
+//Проверяет можно ли из символов строки S составить слово Kn
 function CountN(str, substr)
 {
- let N = 0;
- let result = "";
- let map = CountSymbol(str);
- console.log(map);
- let word = substr.split(' ');
- word.forEach(function (word) {
-     for (let char of word)
-     {
-       if (!map.has(char))
-           N++;
-       else
-       {
-           let value = map.get(char);
-           if (value === 0)
-               N++;
-           else map.set(char, value - 1);
-       }
-     }
+    let N = 0;
+    let result = "";
+    let map = CountSymbol(str);
+    console.log(map);
+    let word = substr.split(' ');
+    word.forEach(function (word) {
+        for (let char of word)
+        {
+            if (!map.has(char))
+                N++;
+            else
+            {
+                if (map.get(char) === 0)
+                    N++;
+                else map.set(char, map.get(char) - 1);
+            }
+        }
      result += word + " = " + N + "\n";
-
      map = CountSymbol(str);
      N = 0;
  });
-alert(result);
+    alert(result);
  }
-
 
 let S = prompt("Введите слово S");
 let Kn = prompt("Введите слова k..kn");
-S.toLowerCase();
-Kn.toLowerCase();
+S.toUpperCase();
+Kn.toUpperCase();
 CountN(S,Kn);
 
 });
