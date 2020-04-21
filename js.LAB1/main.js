@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+//считаем кол-во символов в слове S и кол-во его повторений
 function CountSymbol(word)
 {
     let CounterMap = new Map();
@@ -11,7 +12,7 @@ function CountSymbol(word)
     }
     return CounterMap;
 }
-
+//чекаем можно ли составить из символов слова S слова K..Kn 
 function CountN(str, substr)
 {
  let N = 0;
