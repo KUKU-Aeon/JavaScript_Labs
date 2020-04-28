@@ -41,10 +41,11 @@ function CountN(str, substr)
     alert(result);
  }
 
-let S = prompt("Введите слово S");
-let Kn = prompt("Введите слова k..kn через пробел");
-S.toUpperCase();
-Kn.toUpperCase();
+let S = prompt("Введите слово S").toUpperCase();
+let Kn = prompt("Введите слова k..kn через пробел").toUpperCase();
+
+console.log(S);
+console.log(Kn);
 CountN(S,Kn);
 
 });
